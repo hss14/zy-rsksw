@@ -3,42 +3,78 @@
 		public $title="枣阳人事考试网";
 		public $style="./css/homepage.css";
 		public $content;
-		public $buttons = array();
+		public $buttons = array( "shouye" => "shouye.php",
+					 "xinwendongtai" => "xinwendongtai.php",
+					 "gongshigonggao" => "gongshigonggao.php",
+					 "zhuanyejishukaoshi" => "zhuanyejishukaoshi.php",
+					 "shiyedanweikaoshi" => "shiyedanweikaoshi.php",
+					 "shehuihuakaoshi" => "shehuihuakaoshi.php",
+					 "gongwuyuankaoshi" => "gongwuyuankaoshi.php",
+					 "banshizhinan" => "banshizhinan.php",
+					 "ziliaoxiazai" => "ziliaoxiazai.php"	);
 
 		public function __set($name, $value) {
 			$this->name = $value;
 		}
 
 		public function Display() {
-			echo "<html><br/>"."<head><br/>";
-			$this->DisplayHtmlHead();
-			echo "</head><br/>"."<body><br/>";
-			$this->DisplayHeader();
+			$this->DisplayHead();
 			$this->DisplayMenu($this->buttons);
 			echo $this->content;
 			$this->Displayfooter();
-			echo "</body></br>"."</html>";
 		}
 
-		public function DisplayHtmlHead( ) {
+		public function DisplayHead( ) {
+			echo "<html><br/>"."<head><br/>";
 			echo "\t<title>".$this->title."</title>\n";
-			echo "\t<link href='".$this->style."' rel='stylesheet' type='text/css' />";
+			echo "\t<link href='".$this->style."' rel='stylesheet' type='text/css' />\n";
 ?>
 	<meta name="description" content="欢迎访问枣阳人事考试网,枣阳市人事考试院,枣阳教育考试网,地址：湖北省枣阳市民主路23号,电话：0710-6311315 " />
 	<meta name="keywords" content="枣阳人事考试网,枣阳人事培训考试中心,枣阳教育考试网" />
+</head>
+<body>
+<div class='div900c'>
+	<div class="head_title marginAuto"></div>
 <?php
 		}
 
-		public function DisplayHeader() {
+		public function IsURLCurrentPage( $url="" ) {
+			if( $url == "" )
+				return false;
+			if( strpos( $_SERVER['PHP_SELF'], $url ) == false )
+				return false;
+			return true;
+		}
 
+		public function DisplayButton( $width, $name, $url, $active=true ) {
+			if( $active )
+				echo "<td width='".$width."%'><a href='".$url."' title='".$name."'>".$name."</a>|</td>\n";
+			else
+				echo "<td width='".$width."%'>".$name."</td>\n";
 		}
 
 		public function DisplayMenu( $buttons ) {
 
+        		echo "\t\t<div class='head_menu marginAuto'>\n";
+            		echo "\t\t\t<div id='head_A' class='left_10p top_10p' style='float: left;'>\n";
+			echo "\t\t\t\t"
+                 <a href='/'>首页</a>|
+                     <a   href='/xinwendongtai/' title='新闻动态'>新闻动态</a> |
+                     <a   href='/gongshigonggao/' title='公示公告'>公示公告</a> |
+                     <a   href='/zhuanyejishukaoshi/' title='专业技术考试'>专业技术考试</a> |
+                     <a   href='/shiyedanweikaoshi/' title='事业单位考试'>事业单位考试</a> |
+                     <a   href='/shehuihuakaoshi/' title='社会化考试'>社会化考试</a> |
+                     <a   href='/gongwuyuankaoshi/' title='公务员考试'>公务员考试</a> |
+                     <a   href='/banshizhinan/' title='办事指南'>办事指南</a> |
+                     <a   href='/ziliaoxiazai/' title='资料下载'>资料下载</a> 
+            </div>
+        </div>
 		}
 
 		public function Displayfooter() {
 
+    			echo "</div>\n";
+			echo "</body></br>"."</html>";
 		}
 	}
 ?>
@@ -50,96 +86,47 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <div class="div900c">
-        <div class="head_title marginAuto"></div>
-        <div class="head_menu marginAuto">
-            <div id="head_A" class="left_10p top_10p" style="float: left;">
-                 <a href="/">首页</a>|
-                     <a   href="/xinwendongtai/" title="新闻动态">新闻动态</a> |
-                     <a   href="/gongshigonggao/" title="公示公告">公示公告</a> |
-                     <a   href="/zhuanyejishukaoshi/" title="专业技术考试">专业技术考试</a> |
-                     <a   href="/shiyedanweikaoshi/" title="事业单位考试">事业单位考试</a> |
-                     <a   href="/shehuihuakaoshi/" title="社会化考试">社会化考试</a> |
-                     <a   href="/gongwuyuankaoshi/" title="公务员考试">公务员考试</a> |
-                     <a   href="/banshizhinan/" title="办事指南">办事指南</a> |
-                     <a   href="/ziliaoxiazai/" title="资料下载">资料下载</a> 
-            </div>
-        </div>
-
+        
 
         <div class="div900c">
-
-            
-
-    <div style="width: 900px; min-height: 400px; height: auto; float: left;">
-
-        <div class="left" style="float: left;">
-      
-            <div class="left_content">
-                <div class="leftImgDiv">
-                    <a href="/fenshu/" target="_blank">
-                        <img src="/templets/zaoyang/images/wscf.png" border="0" width="210"></a>
-                </div>
-            </div>
-            <div class="left_content">
-                <div class="leftImgDiv">
-                    <a href="/zhunkaozheng/" target="_blank">
-                        <img src="/templets/zaoyang/images/wsdyzkz.png" border="0" width="210"></a>
-                </div>
-            </div>
-<br/>
-            <div class="left_content">
-
-                <div class="bottom_titles">
-
-                    <div style="float: left; margin-top: 12px; font-size: 15px; margin-left: 13px; display: inline;
-
-                        color: White;">
-
-                        友情链接</div>
-
-                  
-
-                </div>
-
-                <div class="left_yqlj border_1" style="text-align:left">
-
-                    <ul>     
+    		<div style="width: 900px; min-height: 400px; height: auto; float: left;">
+        		<div class="left" style="float: left;">
+            			<div class="left_content">
+                			<div class="leftImgDiv">
+                    				<a href="/fenshu/" target="_blank">
+                        			<img src="/templets/zaoyang/images/wscf.png" border="0" width="210">
+						</a>
+                			</div>
+            			</div>
+            			<div class="left_content">
+                			<div class="leftImgDiv">
+                    				<a href="/zhunkaozheng/" target="_blank">
+     	                   			<img src="/templets/zaoyang/images/wsdyzkz.png" border="0" width="210">
+						</a>
+                			</div>
+            			</div><br/>
+            			<div class="left_content">
+                			<div class="bottom_titles">
+                    				<div style="float: left; margin-top: 12px; font-size: 15px; margin-left: 13px; display: inline;color: White;">友情链接</div>
+                			</div>
+                			<div class="left_yqlj border_1" style="text-align:left">
+                    				<ul>
  <li><a href='http://zypxks.lxsk.com/' target='_blank'>枣阳市人事培训管理和在线考试系统</a> </li><li><a href='http://www.hbsrsksy.cn/' target='_blank'>湖北人事考试网</a> </li><li><a href='http://www.xyrsks.cn/' target='_blank'>襄阳市人事考试网</a> </li><li><a href='http://www.xzrsksw.com/' target='_blank'>襄州区人事考试网</a> </li><li><a href='http://www.zylb.gov.cn/' target='_blank'>枣阳市人力资源和社会保障局</a> </li><li><a href='http://www.zyjyj.cn/' target='_blank'>枣阳市教育局</a> </li><li><a href='http://www.hbzyfh.com/' target='_blank'>枣阳市第一人民医院</a> </li>
-					</ul>
+						</ul>
+                			</div>
+            			</div>
+        		</div>
 
-                  
-
-                </div>
-
-            </div>
-
-            
-
-            
-
-        </div>
-
-        <div style="float: left; width: 10px; height: 100px;">
-
-        </div>
-
-        <div class="middle" style="float: left;">
-
-            <div class="left_top">
-
-                <div class="more" style="text-align: center; width: 60px; float: left;">
-
-                     <a href="/xinwendongtai/">更多</a></div>
-
-                <div class="more new_title">
-
-                    新闻动态</div>
-
-            </div>
-
-            <div class="new_contents">
-				<ul>
+		        <div style="float: left; width: 10px; height: 100px;"></div>
+        		<div class="middle" style="float: left;">
+            			<div class="left_top">
+                			<div class="more" style="text-align: center; width: 60px; float: left;">
+                     				<a href="/xinwendongtai/">更多</a>
+		    			</div>
+                			<div class="more new_title"> 新闻动态</div>
+            			</div>
+            			<div class="new_contents">
+					<ul>
                  <li><a href="/xinwendongtai/2016/0627/1336.html" title="2016年6月27日领证通知" target='_blank'>2016年6月27日领证通知</a><span>16-06-27</span></li>
 <li><a href="/xinwendongtai/2016/0513/1264.html" title="枣阳市人民政府财政投资评审中心2016年度公开招" target='_blank'>枣阳市人民政府财政投资评审中心2016年度公开招</a><span>16-05-13</span></li>
 <li><a href="/xinwendongtai/2016/0425/1263.html" title="关于调整2016年度水平能力测试准考证打印时间的" target='_blank'>关于调整2016年度水平能力测试准考证打印时间的</a><span>16-04-25</span></li>
@@ -151,19 +138,14 @@
 <li><a href="/xinwendongtai/2016/0401/1251.html" title="关于襄阳市2016年度专业技术人员晋升专业技术职" target='_blank'>关于襄阳市2016年度专业技术人员晋升专业技术职</a><span>16-04-01</span></li>
 <li><a href="/xinwendongtai/2016/0331/1249.html" title="关于做好2016年全省机关事业单位工勤人员技术等" target='_blank'>关于做好2016年全省机关事业单位工勤人员技术等</a><span>16-03-31</span></li>
 
-                  </ul>
-            </div>
+                 			 </ul>
+            			</div>
 
             <div style="margin-top: 8px;">
-
                 <div style="width: 312px; min-height: 220px; float: left">
-
                     <div class="samlltitle">
-
                         <div class="samll_title more" style="color: White;">
-
                             图片新闻</div>
-
                         <div class="more" style="display: inline; text-align: right; float: left; width: 200px;">
 
                             <a href="/tupianxinwen/">更多...  </a></div>
@@ -414,10 +396,5 @@ $("#slide_x").cxSlide({plus:true,minus:true});
 
         </div>
 
-    </div>
 
     </form>
-
-</body>
-
-</html>
