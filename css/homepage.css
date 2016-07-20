@@ -562,13 +562,9 @@ body{text-align:center;}
 }
 
 .left_10p
-
 {
-
     margin-left:4px;
-
     display:inline;
-
 }
 
 .top_5p
@@ -594,29 +590,19 @@ body{text-align:center;}
 }
 
 #head_A a
-
 {
-
     color:White;
-
     font-size:14px;
-
     font-weight:bold;
-
     text-decoration:none;
-
     padding:3px;
-
 }
 
 #head_A a:hover
 
 {
-
     color:#ad053c;
-
     text-decoration:none;
-
 }
 
 .timetoday

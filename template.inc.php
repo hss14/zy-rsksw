@@ -63,7 +63,7 @@
 		public function DisplayMenu( $buttons ) {
 
         		echo "\t<div class='head_menu marginAuto'>\n";
-            		echo "\t\t<div id='head_A' class='left_10p top_10p' style='float: left;'>\n";
+            		echo "\t\t<div id='head_A' class='left_10p top_10p' >\n";//style='float: left;'>\n";
 			echo "\t\t\t<table width='100%' cellpadding='12' cellspacing='0' border='0'><tr>\n";
 			$width = 100 / count($buttons) ;
 			foreach ($buttons as $name => $url ) {
