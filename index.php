@@ -1,4 +1,5 @@
 <?php
+	require_once("template.inc.php");
 	$index = new PageZyrsksw();
 	$index->Display();
 ?>
