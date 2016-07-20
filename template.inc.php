@@ -55,7 +55,7 @@
 
 		public function DisplayButton( $width, $name, $url, $active=true ) {
 			if( $active )
-				echo "<td width='".$width."%'><a href='".$url."' title='".$name."'>".$name."</a>|</td>\n";
+				echo "<td width='".$width."%'><a href='".$url."' title='".$name."'>".$name."</a></td>\n";
 			else
 				echo "<td width='".$width."%'>".$name."</td>\n";
 		}
@@ -76,12 +76,14 @@
 
 		public function Displayfooter() {
 ?>
+
 	<div class='footer footerimg marginAuto' style='line-height:140%;font-size:13px;'>
 	        <A title='工信部备案许可证' href='http://www.miibeian.gov.cn/' target='_blank' rel='nofollow'>鄂ICP备14015568号-1</a>技术支持：<A title='襄阳华维网络' href='http://www.huavee.com/' target='_blank' rel='nofollow'>襄阳华维网络</a><br/>
 		版权所有<font color='#4e5766'>：枣阳市人事考试院</font><br/>
         	地址：湖北省枣阳市民主路23号　　　 电话：0710-6311315 
 		<script type='text/javascript'>var cnzz_protocol = (('https:' == document.location.protocol) ? ' https://' : ' http://');document.write(unescape('%3Cspan id='cnzz_stat_icon_1253584961'%3E%3C/span%3E%3Cscript src='' + cnzz_protocol + 's11.cnzz.com/stat.php%3Fid%3D1253584961%26show%3Dpic' type='text/javascript'%3E%3C/script%3E'));</script>
-        </div>
+
+	</div>
 </div>
 </body>
 </html>
