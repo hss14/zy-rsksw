@@ -78,7 +78,7 @@
 			if( $active )
 				echo "<a href='".$url."' title='".$name."'>".$name."</a>|\n";
 			else
-				echo $name."|\n";
+				echo "<span>".$name."</span>|\n";
 		}
 
 		public function DisplayMenu( $buttons ) {
