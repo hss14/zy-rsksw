@@ -1,5 +1,5 @@
 <?php
-	require_once("template.inc.php");
+	require_once("include/template.inc.php");
 	$index = new PageZyrsksw();
 	$index->Display();
 ?>
