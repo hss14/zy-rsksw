@@ -53,6 +53,7 @@
 			return true;
 		}
 
+	/*
 		public function DisplayButton( $width, $name, $url, $active=true ) {
 			if( $active )
 				echo "<td width='".$width."%'><a href='".$url."' title='".$name."'>".$name."</a>|</td>\n";
@@ -71,6 +72,24 @@
 				$this->DisplayButton($width, $name, $url, ! $this->IsURLCurrentPage($url) );
 			}
 			echo "\t\t\t</tr></table>\n"."\t\t</div>\n"."\t</div>\n";
+		}
+	*/
+		public function DisplayButton( $width, $name, $url, $active=true ) {
+			if( $active )
+				echo "<a href='".$url."' title='".$name."'>".$name."</a>|\n";
+			else
+				echo $name."|\n";
+		}
+
+		public function DisplayMenu( $buttons ) {
+
+        		echo "\t<div class='head_menu marginAuto'>\n";
+            		echo "\t\t<div id='head_A' class='left_10p top_10p' style='float: left;'>\n";
+			foreach ($buttons as $name => $url ) {
+				echo "\t\t\t";
+				$this->DisplayButton($width, $name, $url, ! $this->IsURLCurrentPage($url) );
+			}
+			echo "\t\t</div>\n"."\t</div>\n";
 		}
 
 
