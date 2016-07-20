@@ -589,7 +589,7 @@ body{text-align:center;}
 
 }
 
-#head_A a
+#head_A /*a*/
 {
     color:White;
     font-size:14px;
@@ -599,7 +599,6 @@ body{text-align:center;}
 }
 
 #head_A a:hover
-
 {
     color:#ad053c;
     text-decoration:none;

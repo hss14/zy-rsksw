@@ -55,7 +55,7 @@
 
 		public function DisplayButton( $width, $name, $url, $active=true ) {
 			if( $active )
-				echo "<td width='".$width."%'><a href='".$url."' title='".$name."'>".$name."</a></td>\n";
+				echo "<td width='".$width."%'><a href='".$url."' title='".$name."'>".$name."</a>|</td>\n";
 			else
 				echo "<td width='".$width."%'>".$name."</td>\n";
 		}
