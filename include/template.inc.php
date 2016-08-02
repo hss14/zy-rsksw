@@ -1,17 +1,42 @@
 <?php
+	require_once( $_SERVER['DOCUMENT_ROOT']."/include/header.inc.php");
+
+	function display_html_header( $title="枣阳人事考试网", $style="/css/homepage.css" ) {
+?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?php
+			echo "\t<title>".$title."</title>\n";
+			echo "\t<link href='".$style."' rel='stylesheet' type='text/css' />\n";
+?>
+	<meta name="description" content="欢迎访问枣阳人事考试网,枣阳市人事考试院,枣阳教育考试网,地址：湖北省枣阳市民主路23号,电话：0710-6311315 " />
+	<meta name="keywords" content="枣阳人事考试网,枣阳人事培训考试中心,枣阳教育考试网" />
+</head>
+<body>
+
+<?php
+	}
+
 	class PageZyrsksw {
 		public $title="枣阳人事考试网";
-		public $style="./css/homepage.css";
+		public $style="/css/homepage.css";
 		public $content;
-		public $buttons = array( "首页" => "index.php",
-					 "新闻动态" => "xinwendongtai.php",
-					 "公示公告" => "gongshigonggao.php",
-					 "专业技术考试" => "zhuanyejishukaoshi.php",
-					 "事业单位考试" => "shiyedanweikaoshi.php",
-					 "社会化考试" => "shehuihuakaoshi.php",
-					 "公务员考试" => "gongwuyuankaoshi.php",
-					 "办事指南" => "banshizhinan.php",
-					 "资料下载" => "ziliaoxiazai.php"	);
+		public $buttons = array( "首页" => "/index.php",
+					 "新闻" => "/bulletin/xinwendongtai.php",
+					 "公告" => "/bulletin/gongshigonggao.php",
+					 "专业技术考试" => "/bulletin/zhuanyejishukaoshi.php",
+					 "事业单位考试" => "/bulletin/shiyedanweikaoshi.php",
+					 "社会化考试" => "/bulletin/shehuihuakaoshi.php",
+					 "公务员考试" => "/bulletin/gongwuyuankaoshi.php",
+					 "办事指南" => "/bulletin/banshizhinan.php",
+					 "资料下载" => "/bulletin/ziliaoxiazai.php",
+					 "网上报名" => "/enroll/enroll_menu.php",
+					 "网上查分" => "/score/score_menu.php"
+					 );
 
 		public function __set($name, $value) {
 			$this->name = $value;
@@ -25,21 +50,9 @@
 		}
 
 		public function DisplayHead( ) {
+			display_html_header( $this->title, $this->style );
 ?>
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
-<html xmlns='http://www.w3.org/1999/xhtml'>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<?php
-			echo "\t<title>".$this->title."</title>\n";
-			echo "\t<link href='".$this->style."' rel='stylesheet' type='text/css' />\n";
-?>
-	<meta name="description" content="欢迎访问枣阳人事考试网,枣阳市人事考试院,枣阳教育考试网,地址：湖北省枣阳市民主路23号,电话：0710-6311315 " />
-	<meta name="keywords" content="枣阳人事考试网,枣阳人事培训考试中心,枣阳教育考试网" />
-</head>
-<body>
+
 <div class='div900c'>
 	<div class="head_title marginAuto"></div>
 <?php

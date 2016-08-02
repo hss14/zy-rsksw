@@ -53,7 +53,7 @@ p
 {
 	float:left;
     background:url(../images/footer1.gif) repeat-x;
-    width:864px;
+    width:870px;
     height:90px;padding-top:20px;
 }
 
@@ -96,14 +96,14 @@ body{text-align:center;}
 {
     background:url(../images/head_title.jpg) no-repeat;
     height:178px;
-    width: 864px;
+    width: 870px;
 }
 
 .head_menu
 {
     background:url(../images/menu_title.gif) repeat-x;
     height:35px;
-    width:864px;
+    width:870px;
 }
 
 .middle_Center
@@ -525,12 +525,30 @@ body{text-align:center;}
 
 }
 
-.tabMain_table
-
+.form_table
 {
+	font-size:15px;
+	margin-left: 200px;
+}
 
+.print_table
+{
+	font-size:20px;
+	margin: auto;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.print_table td 
+{
+	border: 1px solid black;
+	padding: 10px;
+	width: 35mm;
+}
+
+.tabMain_table
+{
 	border:1px solid #87a8d5;
-
 }
 
 .tabMain_DG
@@ -563,7 +581,7 @@ body{text-align:center;}
 
 .left_10p
 {
-    margin-left:4px;
+    margin-left:3px;
     display:inline;
 }
 
@@ -587,6 +605,11 @@ body{text-align:center;}
 
     margin-top:10px;
 
+}
+
+#head_A
+{
+    width:870px;
 }
 
 #head_A a,span
@@ -837,35 +860,24 @@ body{text-align:center;}
 }
 
 .RedFont
-
 {
-
     color:red;
-
     font-weight:bold;
-
     text-decoration: underline;
-
 }
 
+.Red { color:red; }
+
  .RedFont a:link
-
 {
-
     color: red;
-
     text-decoration: underline;
-
 }
 
 .RedFont a:visited
-
 {
-
     color: red;
-
     text-decoration: underline;
-
 }
 
 .RedFont a:hover
@@ -896,6 +908,7 @@ body{text-align:center;}
 
 
 .conta{background:url(../images/articlbg.gif);*width:865px;}
+
 .contation{background:url(../images/articlbg.gif);padding:30px 20px}
 
 .contation h3{border-bottom:1px solid #ccc;line-height:35px;text-align:center;margin-bottom:10px;}
@@ -904,7 +917,21 @@ body{text-align:center;}
 
 .contation  div{line-height:24px;text-indent:2em;}
 
+.a_href{ text-align: left; margin-bottom: 20px; font-weight: bold; font-size: 16px; text-decoration: underline; color: rgb(7, 130, 193);  }
 
+
+.button {
+	height: 25px;
+	width: 160px;
+	background-color: #eeeeee;
+
+	border: 1px solid black;
+
+	display: inline-block;
+	margin-left: 180px;
+	margin-top: 50px;
+	margin-bottom: 100px;
+}
 
 
 

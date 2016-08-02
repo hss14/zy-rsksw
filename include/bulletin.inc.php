@@ -1,5 +1,5 @@
 <?php
-	require_once("template.inc.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/include/header.inc.php");
 
 	class bulletin extends PageZyrsksw {
 
