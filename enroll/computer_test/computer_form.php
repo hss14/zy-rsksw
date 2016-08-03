@@ -41,27 +41,32 @@
 						     $shenbao_major, $shenbao_for_major, $company, $position,
 						     $company_year, $company_month, $level_code );
 				$db = dbconnect();
+				$result = $db->query( "select * from computer_test where id=".$id );
+				if( !$result )
+					throw new Exception("从计算机考试数据库获取信息时出现了问题。请您稍后再试。 ");
+				if( $result->num_rows ) {
+					$query = "update computer_test
+							set shenbao_educ='".$shenbao_educ."', shenbao_grad_date='"
+							.$shenbao_grad_year.$shenbao_grad_month."', shenbao_major='".$shenbao_major
+							."', shenbao_for_major='".$shenbao_for_major."', company='".$company
+							."', position='".$position."', company_date='".$company_year.$company_month
+							."', level_code='".$level_code."', done=1
+							where id ='".$id."'"; 
+				} else {
+					$query = "insert into computer_test(id, shenbao_educ, shenbao_grad_date, shenbao_major,
+						  shenbao_for_major, company, position, company_date, level_code, done ) values 
+						  ('".$id."', '".$shenbao_educ."', '".$shenbao_grad_year.$shenbao_grad_month."', '".$shenbao_major
+						  ."', '".$shenbao_for_major."', '".$company."', '".$position."', '".$company_year.$company_month
+						  ."', '".$level_code."', 1 )";
+				}
 				
-				$query = "insert into computer_test(id, shenbao_educ, shenbao_grad_date, shenbao_major,
-					  shenbao_for_major, company, position, company_date, level_code ) values 
-					  ('".$id."', '".$shenbao_educ."', '".$shenbao_grad_year.$shenbao_grad_month."', '".$shenbao_major
-					  ."', '".$shenbao_for_major."', '".$company."', '".$position."', '".$company_year.$company_month
-					  ."', '".$level_code."' )";
-
 				$result = $db->query($query);
 				if( (!$result) || ( $db->affected_rows != 1 ) )
 					throw new Exception("暂时无法将您的计算机考试报名信息添加到数据库。请您稍后再试。 ");
 				$db->close();
 ?>
-		<p><br/><br/>计算机考试报名信息填写成功！<br/><br/></p>
-		<p>请等待后台管理员进行人工审核。审核通过后，在指定时间内现场缴费成功即报名成功。具体要求详见报名须知。<br/><br/></p>
-		<ul>
-			<br/> <br/> <br/>
-			<li><a href='/enroll/computer_test/viewform.php'><span class="a_href">&gt;&gt; 查看报名表</span></a></li>
-			<br/> <br/> <br/>
-			<li><a href=''><span class="a_href">&gt;&gt; 查看审核结果</span></a></li>
-			<br/> <br/> <br/>
-		</ul>		
+		<p><br/><br/>报名信息填写成功！<br/><br/></p>
+		<p><a href='/enroll/index.php'><span class='a_href'>&gt;&gt;下一步</span></a><br/><br/></p>
 <?php
 			} //end of try
 			catch (Exception $e) {

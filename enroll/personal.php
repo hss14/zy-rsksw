@@ -37,29 +37,19 @@
 				$db = dbconnect();
 				
 				$query = "update personal set gender='".$gender."', people='".$people."', politics='"
-					 .$politics."', marriage='".$marriage."',cellphone='".  $cellphone."' ";
+					 .$politics."', marriage='".$marriage."',cellphone='".  $cellphone."', done=1, checkflag=0 ";
 				if($email)
 					$query .= ", email='".$email."' ";
 				$query .= "where id='".$id."'";
 
 				$result = $db->query($query);
 				if( (!$result) || ( $db->affected_rows != 1 ) ) {
-					echo $db->affected_rows;
 					throw new Exception("暂时无法将您的个人信息添加到数据库。请您稍后再试。 ");
 				}
 				$db->close();
 ?>
 		<p><br/><br/>个人信息填写成功！<br/><br/></p>
-		<p>下面您可以开始报名相应考试了：<br/><br/></p>
-		<ul>
-			<br/> <br/> <br/>
-			<li><a href='/enroll/computer_test/notice.php'><span class="a_href">&gt;&gt; 专业技术人员计算机应用能力考试报名入口</span></a></li>
-			<br/> <br/> <br/>
-			<li><a href='/enroll/recruit_test/notice.php'><span class="a_href">&gt;&gt; 招聘考试入口</span></a></li>
-			<br/> <br/> <br/>
-			<li><a href='/enroll/level_test/notice.php'><span class="a_href">&gt;&gt; 水平能力测试入口</span></a></li>
-			<br/> <br/> <br/>
-		</ul>		
+		<p><a href='/enroll/index.php'><span class='a_href'>&gt;&gt;下一步</span></a><br/><br/></p>
 <?php
 			} //end of try
 			catch (Exception $e) {

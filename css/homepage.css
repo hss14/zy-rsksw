@@ -546,6 +546,25 @@ body{text-align:center;}
 	width: 35mm;
 }
 
+#index_table {
+	width: 90%;
+	font-size: 15px;
+	margin: auto;
+	border: 1px solid black;
+	border-collapse: collapse;
+	font-size: 16px;
+}
+
+#index_table td, th 
+{
+	border: 1px solid black;
+	padding: 15px;
+}
+
+th {
+	text-align: center;
+}
+
 .tabMain_table
 {
 	border:1px solid #87a8d5;

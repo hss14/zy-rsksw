@@ -7,7 +7,8 @@ drop table recruit_test;
 
 create table admin (
 	login_name char(20) not null primary key,
-	passwd char(40) not null
+	passwd char(40) not null,
+	nickname char(20)
 );
 
 create table personal (
@@ -19,9 +20,11 @@ create table personal (
 	marriage enum( '未婚', '已婚', '离异', '丧偶' ),
 	cellphone char(11),
 	email  varchar(254),
+	
 	enroll_date timestamp,
 	done tinyint default 0,
-	checkflag tinyint default 0
+	checkflag tinyint default 0,
+	failstr varchar(100)
 ) character set utf8;
 
 create table exams (
@@ -36,7 +39,7 @@ create table exams (
 
 create table computer_test (
 	id char(18) not null primary key,
-	shenbao_educ enum( '中专', '大专', '本科', '研究生' ) not null,
+	shenbao_educ enum( '初中', '高中', '中专', '大专', '本科', '硕士', '博士' ) not null,
 	shenbao_grad_date char(6),
 	shenbao_major char(20) not null,
 	shenbao_for_major char(20) not null,
@@ -44,20 +47,24 @@ create table computer_test (
 	position char(20),
 	company_date char(6),
 	level_code char(4) not null,
+	
 	enroll_date timestamp,
-	checkflag tinyint default 0
+	done tinyint default 0,
+	checkflag tinyint default 0,
+	failstr varchar(100),
+	money tinyint default 0
 ) character set utf8;
 
 create table recruit_test (
 	id char(18) not null primary key,
 	level_code char(4) not null,
 
-	first_educ enum( '初中', '高中', '中专', '大专', '本科', '研究生' ),
+	first_educ enum( '初中', '高中', '中专', '大专', '本科', '硕士', '博士' ),
 	first_school char(20),
 	first_grad_date char(6),
 	first_major char(20) ,
 	
-	best_educ enum( '初中', '高中', '中专', '大专', '本科', '研究生' ),
+	best_educ enum( '初中', '高中', '中专', '大专', '本科', '硕士', '博士' ),
 	best_school char(20),
 	best_grad_date char(6),
 	best_major char(20),
@@ -93,5 +100,8 @@ create table recruit_test (
 	family3_position varchar(20),
 
 	enroll_date timestamp,
-	checkflag tinyint default 0
+	done tinyint default 0,
+	checkflag tinyint default 0,
+	failstr varchar(100),
+	money tinyint default 0
 ) character set utf8;

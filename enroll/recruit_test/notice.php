@@ -1,12 +1,16 @@
 <?php
 
 require_once($_SERVER['DOCUMENT_ROOT']."/include/notice.inc.php");
-$recruit_notice = new PageNotice();
-$recruit_notice->nextpage = "/enroll/recruit_test/recruitform.php";
-$recruit_notice->DisplayA();
+
+session_start();
+$_SESSION['exam'] = 'recruit';
+
+$notice = new PageNotice();
+$notice->nextpage = "/enroll/index.php";
+$notice->DisplayA();
 ?>
 
 
 <?php
-$recruit_notice->DisplayB();
+$notice->DisplayB();
 ?>

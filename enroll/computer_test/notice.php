@@ -1,8 +1,12 @@
 <?php
 
 require_once($_SERVER['DOCUMENT_ROOT']."/include/notice.inc.php");
+
+session_start();
+$_SESSION['exam'] = 'computer';
+
 $computer_notice = new PageNotice();
-$computer_notice->nextpage = "/enroll/computer_test/computerform.php";
+$computer_notice->nextpage = "/enroll/index.php";
 $computer_notice->DisplayA();
 ?>
 
