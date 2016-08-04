@@ -2,7 +2,7 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/include/template.inc.php');
 // require_once($_SERVER['DOCUMENT_ROOT'].'/include/bulletin.inc.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/include/notice.inc.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/include/page_extends.inc.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/include/database_funcs.inc.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/include/user_funcs.inc.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/include/check_user_input.inc.php');
@@ -17,22 +17,31 @@ $EDUC = array ( '初中'=>'初中', '高中'=>'高中', '中专'=>'中专', '大
 		'本科'=>'本科', '硕士'=>'硕士', '博士'=>'博士'
 		);
 
-$EXAMS = array ( 'computer' => array( 'db_table' => 'computer_test', 
+
+$EXAMS = array ( 'personal' => array( 'db_table' => 'personal',
+				      'chinese' => '个人信息',
+				      'form' => '/enroll/personal.php',
+				      'view' => '/enroll/personal_view.php' ),
+
+                 'computer' => array( 'db_table' => 'computer_test', 
+				      'chinese' => '专业技术人员计算机应用能力考试',
 				      'form' => '/enroll/computer_test/computer_form.php',
-				      'printer' => '/enrol/computer_test/computer_printer.php',
+				      'printer' => '/enroll/computer_test/computer_printer.php',
 				      'view' => '/enroll/computer_test/computer_view.php' ),
 
  		 'recruit' => array( 'db_table' => 'recruit_test', 
+				      'chinese' => '招聘考试',
 				      'form' => '/enroll/recruit_test/recruit_form.php',
-				      'printer' => '/enrol/recruit_test/recruit_printer.php',
+				      'printer' => '/enroll/recruit_test/recruit_printer.php',
 				      'view' => '/enroll/recruit_test/recruit_view.php' ),
 
  		 'level' => array( 'db_table' => 'level_test', 
+				      'chinese' => '水平能力测试',
 				      'form' => '/enroll/level_test/level_form.php',
-				      'printer' => '/enrol/level_test/level_printer.php',
-				      'view' => '/enroll/level_test/level_view.php' ),
-
+				      'printer' => '/enroll/level_test/level_printer.php',
+				      'view' => '/enroll/level_test/level_view.php' )
 		);
+
 
 $EXAM_ID = array( 'computer_test'	=> '01',
 		  'recruit_test'	=> '02',
@@ -40,6 +49,13 @@ $EXAM_ID = array( 'computer_test'	=> '01',
 		);
 
 $CPT_LEVEL = array( '初级'=>'0001',  '中级'=>'0010', '高级'=>'0100'  );
+
+
+function chinese( $key ) {
+	global $CHINESE;
+	if( array_key_exists($key, $CHINESE) ) 	return $CHINESE[$key];
+	else					return $key;
+}
 
 $CHINESE = array (	'id' 		=> '身份证号',
 			'name' 		=> '姓名',
@@ -55,8 +71,9 @@ $CHINESE = array (	'id' 		=> '身份证号',
 			'shenbao_major'	=> '申报学历专业',
 			'company'	=> '工作单位',
 			'position'	=> '现任专业技术职务',
-			'company_date'	=> '开始任职时间',
-			'level_code'	=> '报考级别'
+			'company_date'	=> '任职时间',
+			'level_code'	=> '报考级别',
+			'enroll_date'	=> '报名时间'
 		);
 
 ?>

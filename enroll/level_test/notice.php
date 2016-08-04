@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT']."/include/notice.inc.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/include/page_extends.inc.php");
 
 session_start();
 $_SESSION['exam'] = 'level';

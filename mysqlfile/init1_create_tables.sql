@@ -38,7 +38,7 @@ create table exams (
 ) character set utf8;
 
 create table computer_test (
-	id char(18) not null primary key,
+	id char(18) not null,
 	shenbao_educ enum( '初中', '高中', '中专', '大专', '本科', '硕士', '博士' ) not null,
 	shenbao_grad_date char(6),
 	shenbao_major char(20) not null,
@@ -52,7 +52,14 @@ create table computer_test (
 	done tinyint default 0,
 	checkflag tinyint default 0,
 	failstr varchar(100),
-	money tinyint default 0
+	money tinyint default 0,
+
+	windowsxp tinyint default 0,
+	excel2003 tinyint default 0,
+	word2003 tinyint default 0,
+	internet tinyint default 0,
+
+	primary key( id, level_code)
 ) character set utf8;
 
 create table recruit_test (

@@ -1,5 +1,7 @@
 <?php
 
+require_once( $_SERVER['DOCUMENT_ROOT']. "/include/header.inc.php" );
+
 /**
  * return string for echoing according to status $done, $checkflag, database string $failstr
  */
@@ -33,7 +35,7 @@ function print_edit_tr ( $statement, $edit_url, $display_url, $done = 0, $checkf
 	} else if ($checkflag != 1) {
 		echo "<a href='".$edit_url."'><span class='a_href'>[修改]</span></a>&nbsp;&nbsp;<a href='".$display_url."'><span class='a_href'>[查看]</span></a></td>\n";
 	} else {
-		echo "[修改]&nbsp;&nbsp;<a href='".$diaplay_url."'><span class='a_href'>[查看]</span></a></td>\n";
+		echo "[修改]&nbsp;&nbsp;<a href='".$display_url."'><span class='a_href'>[查看]</span></a></td>\n";
 	}
 
 	echo "\t\t\t\t<td>".print_status( $done, $checkflag, $failstr )."</td>\n";
@@ -121,7 +123,7 @@ function print_enroll_index( $id, $exam ) {
 				</td>
 			</tr>
 			<tr>
-				<td>5、打印准考证</td>
+				<td>5、打印报名表</td>
 				<td>
 <?php
 				if( $money && $form_check && $person_check ) 
@@ -134,34 +136,30 @@ function print_enroll_index( $id, $exam ) {
 		</table>
 <?php
 	if( $money && $form_check && $person_check ) 
-		echo "<br/><br/><p>准考证打印方法说明：点击上方[点此打印]，<br/>
+		echo "<br/><br/><p>报名表打印方法说明：点击上方[点此打印]，<br/>
 			在新打开的页面中，单击鼠标右键，选择“打印”即可。</p>";
 }
 
 
 function simple_table_view( $id, $tablename ) {
 		global $CHINESE, $EXAM_ID;
+
+		$filter = array( 'enroll_date', 'done', 'checkflag', 'failstr', 'money', 'windowsxp', 'excel2003', 'word2003', 'internet' );
 		
-		$db = dbconnect();
 		$query = "select * from ".$tablename." where id='".$id."'";
-		$result = $db->query($query);
-		if( (!$result) || ( $result->num_rows != 1 ) )
-			throw new Exception("获取数据库中相应的表格信息时失败！ ");
+		$result = dbquery($query, 1);
 		$assc = $result->fetch_assoc();
 
 		echo "\t\t\t<table id='index_table'>\n";
 		foreach ( $assc as $key => $value ) {
-			if( ($value==NULL) || ($key=='enroll_date') ||($key=='done') ||($key=='checkflag') ||($key=='failstr') ||($key=='money') )
+			if( ($value==NULL) || in_array($key, $filter)  )
 				continue;
 			echo "\t\t\t\t<tr>\n";
 			echo "\t\t\t\t\t<td>".$CHINESE[$key]."</td>\n";
 
 			if( $key=='level_code') {
-				$db = dbconnect();
 				$query = "select level_position from exams where level_code='".$value."' and exam_id='".$EXAM_ID[$tablename]."'";
-				$result = $db->query($query);
-				if( (!$result) || ( $result->num_rows != 1 ) )
-					throw new Exception("获取数据库中相应的表格信息时失败！ ");
+				$result = dbquery($query);
 				$assc = $result->fetch_assoc();
 				$value = $assc['level_position'];
 			}
@@ -170,7 +168,6 @@ function simple_table_view( $id, $tablename ) {
 		}
 		echo "\t\t\t</table>\n";
 		$result->free();
-		$db->close();
 }
 
 

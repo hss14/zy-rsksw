@@ -4,8 +4,8 @@
 
 	$logout_page = new PageZyrsksw();
 
-	$old_user = $_SESSION['valid_user'];
-	unset($_SESSION['valid_user']);
+	$old_user = $_SESSION['admin_name'];
+	unset($_SESSION['admin_name']);
 	$result_dsty = session_destroy();
 
 	$logout_page->content = "\n\n<div class='div900c'><div class='contation' >\n";

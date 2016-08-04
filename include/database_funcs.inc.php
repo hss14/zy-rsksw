@@ -17,6 +17,33 @@ function dbconnect() {
 	}
 }
 
+function dbquery( $query, $returnone=0, $affectone=0 ) {
+	$db = dbconnect();
+	$result = $db->query( $query );
+	if( !$result )
+		throw new Exception( "查询数据库时出现了一些问题！请您稍后再试。" );
+	if( $returnone && ($result->num_rows != 1)  )
+		throw new Exception( "查询数据库的返回结果出错了！请您稍后再试。" );
+	if( $affectone && ($db->affected_rows!=1) )
+		throw new Exception ("修改数据库时出错了！请您稍后再试。");
+	$db->close();
+	return $result;
+}
+
+
+function num2check( $tablename, $should='done', $shouldnot='checkflag' ) {
+	$db = dbconnect();
+	$result = $db->query( "select count(*) from ".$tablename." where ".$shouldnot." =0 and ".$should." =1" );
+	if( !$result ) {
+		throw new Exception("暂时无法连接到数据库".$tablename."！请您稍后再进行审核工作。");
+	}
+	$count_array = $result->fetch_row();
+	$num = $count_array[0];
+	$result->free();
+	$db->close();
+	return $num;
+}
+
 
 
 ?>

@@ -97,7 +97,6 @@
 				recruit_form();
 		}
 
-<?php
 	} // end of if isset _SESSION
 ?>
 

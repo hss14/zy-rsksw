@@ -48,7 +48,7 @@ if( !isset($_SESSION['valid_user']) ) {
 function print_cmpt_table( $person_assc, $cpt_assc, $exam_assc ) {
 	global $CPTR_SUBJECTS;
 
-	echo "<br/><br/><br/><h1 style='text-align:center;'>".$exam_assc['exam_name']."</h1><br/><br/><br/>";
+	echo "<br/><br/><br/><h1 style='text-align:center;'>".$exam_assc['exam_name']."报名表"."</h1><br/><br/><br/>";
 
 	echo "\t\t<table class='print_table' cellspacing='0'>\n";
 	echo "\t\t\t<tr>\n";

@@ -24,22 +24,33 @@ function echo_text_form_tr ( $str, $name, $maxlength, $comment=NULL, $multi_rows
 	$rows = (int)$maxlength/$cols + 1;
 	echo "\t\t\t\t<tr><td></td><td></td></tr>\n";
 	echo "\t\t\t\t<tr>\n";
+	
 	if( $necessary ) {
 		echo "\t\t\t\t\t<td><span class='Red'>*</span>".$str."</td>\n";
 	} else {
 		echo "\t\t\t\t\t<td>&nbsp;".$str."</td>\n";
 	}
+
 	if( $multi_rows) {
-		echo "\t\t\t\t\t<td><textarea name='".$name."' rows='".$rows."' cols='".$cols."' maxlength='".$maxlength."'></td>\n";
+		echo "\t\t\t\t\t<td><textarea name='".$name."' rows='".$rows."' cols='".$cols."' maxlength='".$maxlength."'></textarea>";
 	} else {
-		echo "\t\t\t\t\t<td><input type='text' name=".$name." maxlength='".$maxlength."'/></td>\n";
+		echo "\t\t\t\t\t<td><input type='text' name='".$name."' maxlength='".$maxlength."'/>";
 		// cols default =20 if not specified
 		// minlength
 	}
-	echo "\t\t\t\t<tr>\n";
 	if( $comment != NULL ) {
-		echo "\t\t\t\t<tr><td>&nbsp;</td><td><small>".$comment."</small></td></tr>\n";
+		echo "&nbsp;&nbsp;&nbsp;<small>(".$comment.")</small>";
 	}
+	echo "</td>\t\t\t\t</tr>\n";
+}
+
+
+function echo_passwd_form_tr( $str, $name ) {
+	echo "\t\t\t\t<tr><td></td><td></td></tr>\n";
+	echo "\t\t\t\t<tr>\n";
+	echo "\t\t\t\t\t<td><span class='Red'>*</span>".$str."</td>\n";
+	echo "\t\t\t\t\t<td><input type='password' name='".$name."'/></td>\n";
+	echo "\t\t\t\t</tr>\n";
 }
 
 function echo_submit_button( $value ) {
@@ -110,6 +121,23 @@ function login_form() {
 <?php
 }
 
+function admin_login_form() {
+?>
+		<form method="post" action="/admin_budn/index_login.php">
+			<table class="form_table" border="0" cellpadding="15" cellspacing="15">
+<?php
+			echo_text_form_tr( '登录名：', 'login_name', 20 );
+			echo_text_form_tr( '昵称：', 'nickname', 20 );
+			echo_passwd_form_tr( '密码：', 'passwd' );
+			echo_submit_button( '登录' );
+?>
+			</table>
+		</form>
+
+<?php
+}
+
+
 function personal_form( $form_action ) {
 		$politics_array = array ( '中共党员' => '01中共党员',
 					'中共预备党员' => '02中共预备党员',
@@ -161,7 +189,7 @@ function cmpt_form()
 		echo_text_form_tr( '申报资格专业名称：', 'shenbao_for_major', 20 );
 		echo_text_form_tr( '工作单位：', 'company', 20 );
 		echo_text_form_tr( '现任专业技术职务：', 'position', 20 );
-		echo_date( '开始任职时间：', 'company_year', 'company_month' );
+		echo_date( '任职时间：', 'company_year', 'company_month' );
 		echo_select_tr( '报考级别：', 'level_code', $CPT_LEVEL);
 		echo_submit_button('确认信息并提交');
 ?>
@@ -174,7 +202,7 @@ function cmpt_form()
 
 function recruit_form()
 {
-	global $MONTH;
+	global $MONTH, $EDUC;
 ?>
 		<form action='/enroll/recruit_test/recruit_form.php' method='post'>
 		<p class="RedFont"><br/><br/>注意：标有*的为必填项目<br/><br/></p>
@@ -192,19 +220,19 @@ function recruit_form()
 		echo_text_form_tr('最高学历毕业院校：', 'best_school', 20, '', 0, 1);
 		echo_text_form_tr('最高学历专业：', 'best_major', 20, '',0, 1);
 
-		echo_text_form_tr('最高学历毕业院校', 'best_school', 20, '', 0, 1);
-		echo_text_form_tr('最高学历专业', 'best_major', 20, '',0, 1);
+		echo_text_form_tr('最高学历毕业院校：', 'best_school', 20, '', 0, 1);
+		echo_text_form_tr('最高学历专业：', 'best_major', 20, '',0, 1);
 
-		echo_text_form_tr('资格证状况', 'certificate', 100, '不超过100字', 1, 1);
-		echo_text_form_tr('普通话状况', 'mandarin', 20, '不超过20字',0, 1);
-		echo_text_form_tr('英语状况', 'english', 20, '不超过20字', 0, 1);
-		echo_text_form_tr('计算机状况', 'computer', 20, '不超过20字', 0, 1);
-		echo_text_form_tr('主要学习、工作<br/>简历和奖惩情况', 'resume', 300, '不超过300字', 1, 1);
-		echo_text_form_tr('身高(厘米)', 'height', 3, '填写3位数字', 0, 1);
-		echo_text_form_tr('体重(千克)', 'weight', 2, '填写2位数字', 0, 1);
-		echo_text_form_tr('兴趣特长', 'hobby', 20, '不超过20字', 0, 1);
-		echo_text_form_tr('家庭地址', 'addr', 20, '不超过20字', 0, 1);
-		echo_text_form_tr('邮政编码', 'postcode', 6, '', 0, 1);
+		echo_text_form_tr('资格证状况：', 'certificate', 100, '不超过100字', 1, 1);
+		echo_text_form_tr('普通话状况：', 'mandarin', 20, '不超过20字',0, 1);
+		echo_text_form_tr('英语状况：', 'english', 20, '不超过20字', 0, 1);
+		echo_text_form_tr('计算机状况：', 'computer', 20, '不超过20字', 0, 1);
+		echo_text_form_tr('主要学习、工作<br/> 简历和奖惩情况：', 'resume', 300, '不超过300字', 1, 1);
+		echo_text_form_tr('身高(厘米)：', 'height', 3, '填写3位数字', 0, 1);
+		echo_text_form_tr('体重(千克)：', 'weight', 2, '填写2位数字', 0, 1);
+		echo_text_form_tr('兴趣特长：', 'hobby', 20, '不超过20字', 0, 1);
+		echo_text_form_tr('家庭地址：', 'addr', 20, '不超过20字', 0, 1);
+		echo_text_form_tr('邮政编码：', 'postcode', 6, '', 0, 1);
 ?>
 		</table>
 
@@ -214,31 +242,30 @@ function recruit_form()
 		<table class="form_table" border="0" cellpadding="15" cellspacing="15">
 
 			<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
-			<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
 <?php
-		echo_text_form_tr('姓名', 'family1_name', 6, '', 0, 0);
-		echo_text_form_tr('与本人关系', 'family1_relation', 5, '', 0, 0);
-		echo_text_form_tr('年龄', 'family1_age', 3, '填写数字', 0, 0);
-		echo_text_form_tr('所在单位', 'family1_company', 20, '', 0, 0);
-		echo_text_form_tr('职务或职称', 'family1_position', 20, '', 0, 0);
+		echo_text_form_tr('姓名：', 'family1_name', 6, '', 0, 0);
+		echo_text_form_tr('与本人关系：', 'family1_relation', 5, '', 0, 0);
+		echo_text_form_tr('年龄：', 'family1_age', 3, '填写数字', 0, 0);
+		echo_text_form_tr('所在单位：', 'family1_company', 20, '', 0, 0);
+		echo_text_form_tr('职务或职称：', 'family1_position', 20, '', 0, 0);
 ?>
 			<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
 			<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
 <?php
-		echo_text_form_tr('姓名', 'family2_name', 6, '', 0, 0);
-		echo_text_form_tr('与本人关系', 'family2_relation', 5, '', 0, 0);
-		echo_text_form_tr('年龄', 'family2_age', 3, '填写数字', 0, 0);
-		echo_text_form_tr('所在单位', 'family2_company', 20, '', 0, 0);
-		echo_text_form_tr('职务或职称', 'family2_position', 20, '', 0, 0);
+		echo_text_form_tr('姓名：', 'family2_name', 6, '', 0, 0);
+		echo_text_form_tr('与本人关系：', 'family2_relation', 5, '', 0, 0);
+		echo_text_form_tr('年龄：', 'family2_age', 3, '填写数字', 0, 0);
+		echo_text_form_tr('所在单位：', 'family2_company', 20, '', 0, 0);
+		echo_text_form_tr('职务或职称：', 'family2_position', 20, '', 0, 0);
 ?>
 			<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
 			<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
 <?php
-		echo_text_form_tr('姓名', 'family3_name', 6, '', 0, 0);
-		echo_text_form_tr('与本人关系', 'family3_relation', 5, '', 0, 0);
-		echo_text_form_tr('年龄', 'family3_age', 3, '填写数字', 0, 0);
-		echo_text_form_tr('所在单位', 'family3_company', 20, '', 0, 0);
-		echo_text_form_tr('职务或职称', 'family3_position', 20, '', 0, 0);
+		echo_text_form_tr('姓名：', 'family3_name', 6, '', 0, 0);
+		echo_text_form_tr('与本人关系：', 'family3_relation', 5, '', 0, 0);
+		echo_text_form_tr('年龄：', 'family3_age', 3, '填写数字', 0, 0);
+		echo_text_form_tr('所在单位：', 'family3_company', 20, '', 0, 0);
+		echo_text_form_tr('职务或职称：', 'family3_position', 20, '', 0, 0);
 		echo "\t\t\t<tr><td>&nbsp;</td><td>&nbsp;</td></tr>\n";
 		echo_submit_button('确认信息并提交');
 ?>
